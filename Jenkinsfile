@@ -14,7 +14,7 @@ pipeline {
     stages {
         stage('git checkout') {
             steps {
-                git branch: 'master', url: 'https://github.com/ygminds73/Ekart.git'
+                git branch: 'master', url: 'https://github.com/akshayronghe1999/Ekart.git'
             }
         }
 
@@ -68,7 +68,7 @@ pipeline {
         stage('build and Tag docker image') {
             steps {
                 script {
-                        sh "docker build -t youngminds73/ekart:latest -f docker/Dockerfile ."
+                        sh "docker build -t akshay2399/ekart:latest -f docker/Dockerfile ."
                     }
             }
         }
@@ -77,8 +77,8 @@ pipeline {
             steps{
                 script{
                    withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
-                   sh 'docker login -u youngminds73 -p ${dockerhubpwd}'}
-                   sh 'docker push youngminds73/ekart:latest'
+                   sh 'docker login -u akshay2399 -p ${dockerhubpwd}'}
+                   sh 'docker push akshay2399/ekart:latest'
                 }
             }
         }
